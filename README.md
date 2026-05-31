@@ -49,6 +49,7 @@ npm run dev
 Frontend runs at: http://localhost:5173
 
 ## Project Structure
+```text
 favourite-books/
 ├── backend/
 │   ├── main.py              # FastAPI app entry point
@@ -63,7 +64,7 @@ favourite-books/
 │       ├── context/         # Auth state management
 │       └── api/             # Axios API client
 └── README.md
-
+```
 ## Troubleshooting
 
 **`.venv\Scripts\activate` not working?**
