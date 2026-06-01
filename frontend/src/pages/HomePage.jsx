@@ -7,14 +7,14 @@ export default function HomePage() {
   const { user, logout } = useAuth();
 
   return (
-    <div style={{ maxWidth: "800px", margin: "0 auto", padding: "40px 20px" }}>
+    <div className="page-container">
       <h1>Favourite Books</h1>
       <p>Welcome to the Favourite Books Online Bookstore.</p>
 
       {user ? (
         <div>
           <p>Logged in as <strong>{user.email}</strong> ({user.role})</p>
-          <div style={{ display: "flex", gap: "10px", marginTop: "20px" }}>
+          <div className="button-group">
             <button onClick={() => navigate("/catalogue")}>Browse Catalogue</button>
             {user.role === "customer" && (
               <button onClick={() => navigate("/cart")}>My Cart</button>
@@ -26,7 +26,7 @@ export default function HomePage() {
           </div>
         </div>
       ) : (
-        <div style={{ display: "flex", gap: "10px", marginTop: "20px" }}>
+        <div className="button-group">
           <button onClick={() => navigate("/login")}>Login</button>
           <button onClick={() => navigate("/register")}>Register</button>
           <button onClick={() => navigate("/catalogue")}>Browse Catalogue</button>

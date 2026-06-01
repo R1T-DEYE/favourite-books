@@ -17,12 +17,10 @@ export default function LoginPage() {
 
   const handleSubmit = async () => {
     setError("");
-
     if (!form.email || !form.password) {
       setError("Both fields are required.");
       return;
     }
-
     try {
       const res = await loginUser(form);
       login(res.data);
@@ -37,10 +35,9 @@ export default function LoginPage() {
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "60px auto", padding: "20px" }}>
+    <div className="form-container">
       <h2>Login</h2>
-
-      <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+      <div className="form-group">
         <input
           name="email"
           type="email"
@@ -55,9 +52,7 @@ export default function LoginPage() {
           value={form.password}
           onChange={handleChange}
         />
-
-        {error && <p style={{ color: "red" }}>{error}</p>}
-
+        {error && <p className="error">{error}</p>}
         <button onClick={handleSubmit}>Login</button>
         <button onClick={() => navigate("/register")}>
           Don't have an account? Register

@@ -32,24 +32,16 @@ export default function CheckoutPage() {
 
   const handleCheckout = async () => {
     setError("");
-
     if (!shippingAddress.trim()) {
       setError("Shipping address is required.");
       return;
     }
-
-    if (cart.items.length === 0) {
-      setError("Your cart is empty.");
-      return;
-    }
-
     try {
       const res = await checkout({
         customer_id: user.linked_id,
         payment_method: paymentMethod,
         shipping_address: shippingAddress,
       });
-
       if (res.data.success) {
         setReceipt(res.data);
       } else {
@@ -60,16 +52,13 @@ export default function CheckoutPage() {
     }
   };
 
-  // Show receipt after successful checkout
   if (receipt) {
     return (
-      <div style={{ maxWidth: "600px", margin: "0 auto", padding: "40px 20px" }}>
+      <div className="page-container">
         <h2>Order Confirmed!</h2>
-        <p style={{ color: "green" }}>
-          Your payment was approved and your order has been placed.
-        </p>
+        <p className="success">Your payment was approved and your order has been placed.</p>
 
-        <div style={{ background: "#f9f9f9", padding: "20px", marginTop: "20px" }}>
+        <div className="receipt-box">
           <h3>Receipt</h3>
           <p><strong>Receipt ID:</strong> {receipt.receipt.receipt_id}</p>
           <p><strong>Order ID:</strong> {receipt.order.order_id}</p>
@@ -79,90 +68,79 @@ export default function CheckoutPage() {
           <p><strong>Issued At:</strong> {new Date(receipt.receipt.issued_at).toLocaleString()}</p>
         </div>
 
-        <div style={{ background: "#f0f0f0", padding: "20px", marginTop: "20px" }}>
+        <div className="receipt-box">
           <h3>Shipment</h3>
           <p><strong>Shipment ID:</strong> {receipt.shipment.shipment_id}</p>
           <p><strong>Delivering to:</strong> {receipt.shipment.address}</p>
           <p><strong>Status:</strong> {receipt.shipment.status}</p>
         </div>
 
-        <div style={{ marginTop: "20px" }}>
-          <button onClick={() => navigate("/catalogue")}>
-            Continue Shopping
-          </button>
+        <div className="button-group">
+          <button onClick={() => navigate("/catalogue")}>Continue Shopping</button>
         </div>
       </div>
     );
   }
 
   return (
-    <div style={{ maxWidth: "600px", margin: "0 auto", padding: "40px 20px" }}>
+    <div className="page-container">
       <h2>Checkout</h2>
 
-      {/* Order Summary */}
       <h3>Order Summary</h3>
       {cart.items.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
-        <table style={{ width: "100%", borderCollapse: "collapse" }}>
+        <table className="data-table">
           <thead>
-            <tr style={{ borderBottom: "2px solid #ccc", textAlign: "left" }}>
-              <th style={{ padding: "8px" }}>Title</th>
-              <th style={{ padding: "8px" }}>Qty</th>
-              <th style={{ padding: "8px" }}>Subtotal</th>
+            <tr>
+              <th>Title</th>
+              <th>Qty</th>
+              <th>Subtotal</th>
             </tr>
           </thead>
           <tbody>
             {cart.items.map((item) => (
-              <tr key={item.book_id} style={{ borderBottom: "1px solid #eee" }}>
-                <td style={{ padding: "8px" }}>{item.title}</td>
-                <td style={{ padding: "8px" }}>{item.quantity}</td>
-                <td style={{ padding: "8px" }}>${item.subtotal.toFixed(2)}</td>
+              <tr key={item.book_id}>
+                <td>{item.title}</td>
+                <td>{item.quantity}</td>
+                <td>${item.subtotal.toFixed(2)}</td>
               </tr>
             ))}
           </tbody>
         </table>
       )}
 
-      <h3 style={{ textAlign: "right" }}>Total: ${cart.total.toFixed(2)}</h3>
+      <div className="cart-total">
+        <h3>Total: ${cart.total.toFixed(2)}</h3>
+      </div>
 
-      {/* Shipping */}
       <h3>Shipping Address</h3>
       <input
+        className="full-width-input"
         placeholder="Enter your full shipping address"
         value={shippingAddress}
         onChange={(e) => setShippingAddress(e.target.value)}
-        style={{ width: "100%", padding: "8px", marginBottom: "16px" }}
       />
 
-      {/* Payment Method */}
       <h3>Payment Method</h3>
-      <div style={{ display: "flex", gap: "20px", marginBottom: "16px" }}>
+      <div className="radio-group">
         <label>
-          <input
-            type="radio"
-            name="payment"
-            value="card"
+          <input type="radio" name="payment" value="card"
             checked={paymentMethod === "card"}
             onChange={() => setPaymentMethod("card")}
-          />
-          {" "}Credit / Debit Card
+          /> Credit / Debit Card
         </label>
         <label>
-          <input
-            type="radio"
-            name="payment"
-            value="paypal"
+          <input type="radio" name="payment" value="paypal"
             checked={paymentMethod === "paypal"}
             onChange={() => setPaymentMethod("paypal")}
-          />
-          {" "}PayPal
+          /> PayPal
         </label>
       </div>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className="error">{error}</p>}
 
-      <div style={{ display: "flex", gap: "10px" }}>
+      <div className="button-group">
         <button onClick={() => navigate("/cart")}>Back to Cart</button>
         <button onClick={handleCheckout}>Place Order</button>
       </div>

@@ -26,18 +26,15 @@ export default function RegisterPage() {
     setError("");
     setSuccess("");
 
-    // Validation
     if (!form.first_name || !form.last_name || !form.email ||
         !form.phone || !form.address || !form.password) {
       setError("All fields are required.");
       return;
     }
-
     if (form.password !== form.confirm_password) {
       setError("Passwords do not match.");
       return;
     }
-
     if (form.password.length < 6) {
       setError("Password must be at least 6 characters.");
       return;
@@ -60,63 +57,22 @@ export default function RegisterPage() {
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "60px auto", padding: "20px" }}>
+    <div className="form-container">
       <h2>Create Account</h2>
+      <div className="form-group">
+        <input name="first_name" placeholder="First Name" value={form.first_name} onChange={handleChange} />
+        <input name="last_name" placeholder="Last Name" value={form.last_name} onChange={handleChange} />
+        <input name="email" type="email" placeholder="Email" value={form.email} onChange={handleChange} />
+        <input name="phone" placeholder="Phone" value={form.phone} onChange={handleChange} />
+        <input name="address" placeholder="Address" value={form.address} onChange={handleChange} />
+        <input name="password" type="password" placeholder="Password (min 6 characters)" value={form.password} onChange={handleChange} />
+        <input name="confirm_password" type="password" placeholder="Confirm Password" value={form.confirm_password} onChange={handleChange} />
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-        <input
-          name="first_name"
-          placeholder="First Name"
-          value={form.first_name}
-          onChange={handleChange}
-        />
-        <input
-          name="last_name"
-          placeholder="Last Name"
-          value={form.last_name}
-          onChange={handleChange}
-        />
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={handleChange}
-        />
-        <input
-          name="phone"
-          placeholder="Phone"
-          value={form.phone}
-          onChange={handleChange}
-        />
-        <input
-          name="address"
-          placeholder="Address"
-          value={form.address}
-          onChange={handleChange}
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="Password (min 6 characters)"
-          value={form.password}
-          onChange={handleChange}
-        />
-        <input
-          name="confirm_password"
-          type="password"
-          placeholder="Confirm Password"
-          value={form.confirm_password}
-          onChange={handleChange}
-        />
-
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        {success && <p style={{ color: "green" }}>{success}</p>}
+        {error && <p className="error">{error}</p>}
+        {success && <p className="success">{success}</p>}
 
         <button onClick={handleSubmit}>Create Account</button>
-        <button onClick={() => navigate("/login")}>
-          Already have an account? Login
-        </button>
+        <button onClick={() => navigate("/login")}>Already have an account? Login</button>
         <button onClick={() => navigate("/")}>Back to Home</button>
       </div>
     </div>

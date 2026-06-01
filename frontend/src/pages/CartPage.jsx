@@ -21,17 +21,7 @@ export default function CartPage() {
     }
   };
 
-  useEffect(() => {
-    getCart(user.linked_id)
-      .then((res) => {
-        if (res.data.items.length === 0) {
-          navigate("/cart");
-        } else {
-          setCart(res.data);
-        }
-      })
-      .catch(() => setError("Failed to load cart."));
-  }, []);
+  useEffect(() => { fetchCart(); }, []);
 
   const handleRemove = async (bookId) => {
     try {
@@ -45,10 +35,7 @@ export default function CartPage() {
   };
 
   const handleQuantityChange = async (bookId, newQty) => {
-    if (newQty <= 0) {
-      handleRemove(bookId);
-      return;
-    }
+    if (newQty <= 0) { handleRemove(bookId); return; }
     try {
       const res = await updateCartQuantity({
         customer_id: user.linked_id,
@@ -63,11 +50,11 @@ export default function CartPage() {
   };
 
   return (
-    <div style={{ maxWidth: "800px", margin: "0 auto", padding: "40px 20px" }}>
+    <div className="page-container">
       <h2>Your Cart</h2>
 
-      {message && <p style={{ color: "green" }}>{message}</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {message && <p className="success">{message}</p>}
+      {error && <p className="error">{error}</p>}
 
       {cart.items.length === 0 ? (
         <div>
@@ -76,42 +63,40 @@ export default function CartPage() {
         </div>
       ) : (
         <div>
-          <table style={{ width: "100%", borderCollapse: "collapse" }}>
+          <table className="data-table">
             <thead>
-              <tr style={{ borderBottom: "2px solid #ccc", textAlign: "left" }}>
-                <th style={{ padding: "8px" }}>Title</th>
-                <th style={{ padding: "8px" }}>Qty</th>
-                <th style={{ padding: "8px" }}>Unit Price</th>
-                <th style={{ padding: "8px" }}>Subtotal</th>
-                <th style={{ padding: "8px" }}>Action</th>
+              <tr>
+                <th>Title</th>
+                <th>Qty</th>
+                <th>Unit Price</th>
+                <th>Subtotal</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
               {cart.items.map((item) => (
-                <tr key={item.book_id} style={{ borderBottom: "1px solid #eee" }}>
-                  <td style={{ padding: "8px" }}>{item.title}</td>
-                  <td style={{ padding: "8px" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                <tr key={item.book_id}>
+                  <td>{item.title}</td>
+                  <td>
+                    <div className="qty-controls">
                       <button onClick={() => handleQuantityChange(item.book_id, item.quantity - 1)}>-</button>
                       <span>{item.quantity}</span>
                       <button onClick={() => handleQuantityChange(item.book_id, item.quantity + 1)}>+</button>
                     </div>
                   </td>
-                  <td style={{ padding: "8px" }}>${item.unit_price.toFixed(2)}</td>
-                  <td style={{ padding: "8px" }}>${item.subtotal.toFixed(2)}</td>
-                  <td style={{ padding: "8px" }}>
-                    <button onClick={() => handleRemove(item.book_id)}>Remove</button>
-                  </td>
+                  <td>${item.unit_price.toFixed(2)}</td>
+                  <td>${item.subtotal.toFixed(2)}</td>
+                  <td><button onClick={() => handleRemove(item.book_id)}>Remove</button></td>
                 </tr>
               ))}
             </tbody>
           </table>
 
-          <div style={{ marginTop: "20px", textAlign: "right" }}>
+          <div className="cart-total">
             <h3>Total: ${cart.total.toFixed(2)}</h3>
           </div>
 
-          <div style={{ display: "flex", gap: "10px", marginTop: "20px" }}>
+          <div className="button-group">
             <button onClick={() => navigate("/catalogue")}>Continue Shopping</button>
             <button onClick={() => navigate("/checkout")}>Proceed to Checkout</button>
           </div>

@@ -18,7 +18,6 @@ export default function CataloguePage() {
     try {
       const res = await getCatalogue(query);
       setBooks(res.data);
-      // Initialise all quantities to 1
       const initial = {};
       res.data.forEach((b) => { initial[b.book_id] = 1; });
       setQuantities(initial);
@@ -37,17 +36,10 @@ export default function CataloguePage() {
   };
 
   const handleAddToCart = async (book) => {
-    if (!user) {
-      navigate("/login");
-      return;
-    }
+    if (!user) { navigate("/login"); return; }
     const quantity = quantities[book.book_id] || 1;
     try {
-      await addToCart({
-        customer_id: user.linked_id,
-        book_id: book.book_id,
-        quantity,
-      });
+      await addToCart({ customer_id: user.linked_id, book_id: book.book_id, quantity });
       setMessage(`"${book.title}" (x${quantity}) added to cart.`);
       setTimeout(() => setMessage(""), 3000);
     } catch (err) {
@@ -57,16 +49,15 @@ export default function CataloguePage() {
   };
 
   return (
-    <div style={{ maxWidth: "900px", margin: "0 auto", padding: "40px 20px" }}>
+    <div className="page-container">
       <h2>Book Catalogue</h2>
 
-      <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
+      <div className="search-bar">
         <input
           placeholder="Search by title, author, genre..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-          style={{ flex: 1 }}
         />
         <button onClick={handleSearch}>Search</button>
         <button onClick={() => { setSearch(""); fetchBooks(); }}>Clear</button>
@@ -74,59 +65,52 @@ export default function CataloguePage() {
         {user && <button onClick={() => navigate("/cart")}>View Cart</button>}
       </div>
 
-      {message && <p style={{ color: "green" }}>{message}</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {message && <p className="success">{message}</p>}
+      {error && <p className="error">{error}</p>}
 
       {books.length === 0 ? (
         <p>No books found.</p>
       ) : (
-        <table style={{ width: "100%", borderCollapse: "collapse" }}>
+        <table className="data-table">
           <thead>
-            <tr style={{ borderBottom: "2px solid #ccc", textAlign: "left" }}>
-              <th style={{ padding: "8px" }}>Title</th>
-              <th style={{ padding: "8px" }}>Author</th>
-              <th style={{ padding: "8px" }}>Genre</th>
-              <th style={{ padding: "8px" }}>Price</th>
-              <th style={{ padding: "8px" }}>Stock</th>
-              <th style={{ padding: "8px" }}>Qty</th>
-              <th style={{ padding: "8px" }}>Action</th>
+            <tr>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Genre</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Qty</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {books.map((book) => (
-              <tr key={book.book_id} style={{ borderBottom: "1px solid #eee" }}>
-                <td style={{ padding: "8px" }}>{book.title}</td>
-                <td style={{ padding: "8px" }}>{book.author}</td>
-                <td style={{ padding: "8px" }}>{book.genre}</td>
-                <td style={{ padding: "8px" }}>${book.price.toFixed(2)}</td>
-                <td style={{ padding: "8px" }}>{book.stock}</td>
-                <td style={{ padding: "8px" }}>
+              <tr key={book.book_id}>
+                <td>{book.title}</td>
+                <td>{book.author}</td>
+                <td>{book.genre}</td>
+                <td>${book.price.toFixed(2)}</td>
+                <td>{book.stock}</td>
+                <td>
                   {book.stock > 0 && user?.role === "customer" && (
                     <input
                       type="number"
                       min="1"
                       max={book.stock}
                       value={quantities[book.book_id] || 1}
-                      onChange={(e) =>
-                        handleQuantityChange(book.book_id, e.target.value, book.stock)
-                      }
-                      style={{ width: "55px" }}
+                      onChange={(e) => handleQuantityChange(book.book_id, e.target.value, book.stock)}
+                      className="qty-input"
                     />
                   )}
                 </td>
-                <td style={{ padding: "8px" }}>
+                <td>
                   {user?.role === "customer" && (
-                    <button
-                      onClick={() => handleAddToCart(book)}
-                      disabled={book.stock === 0}
-                    >
+                    <button onClick={() => handleAddToCart(book)} disabled={book.stock === 0}>
                       {book.stock === 0 ? "Out of Stock" : "Add to Cart"}
                     </button>
                   )}
                   {!user && (
-                    <button onClick={() => navigate("/login")}>
-                      Login to Buy
-                    </button>
+                    <button onClick={() => navigate("/login")}>Login to Buy</button>
                   )}
                 </td>
               </tr>

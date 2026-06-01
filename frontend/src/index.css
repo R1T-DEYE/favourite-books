@@ -1,0 +1,127 @@
+/* ================================================
+   Favourite Books — Global Stylesheet
+   
+   CLASS REFERENCE:
+   .page-container   — main content wrapper for all pages
+   .form-container   — centered wrapper for login/register forms
+   .form-group       — vertical stack of form inputs
+   .button-group     — horizontal row of buttons
+   .data-table       — tables used in catalogue, cart, staff
+   .search-bar       — search input + button row on catalogue page
+   .qty-input        — number input for book quantity in catalogue
+   .qty-controls     — +/- quantity buttons in cart
+   .cart-total       — total price display in cart/checkout
+   .receipt-box      — receipt and shipment info boxes on confirmation page
+   .radio-group      — payment method radio buttons on checkout
+   .full-width-input — shipping address input on checkout
+   .error            — red error message text
+   .success          — green success message text
+   .staff-header    — top bar with title and logout button on staff dashboard
+   .tab-group       — horizontal tab buttons on staff dashboar
+   .tab-active      — active tab button state
+   .report-controls — date range inputs and generate button on sales report
+   ================================================ */
+
+/* Global reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+
+}
+
+/* Page layout */
+.page-container {
+
+}
+
+.form-container {
+
+}
+
+/* Forms */
+.form-group {
+
+}
+
+.form-group input {
+
+}
+
+.full-width-input {
+
+}
+
+/* Buttons */
+button {
+
+}
+
+button:hover {
+
+}
+
+button:disabled {
+
+}
+
+.button-group {
+
+}
+
+/* Tables */
+.data-table {
+
+}
+
+.data-table th {
+
+}
+
+.data-table td {
+
+}
+
+.data-table tr:hover {
+
+}
+
+/* Catalogue */
+.search-bar {
+
+}
+
+.qty-input {
+
+}
+
+/* Cart */
+.qty-controls {
+
+}
+
+.cart-total {
+
+}
+
+/* Checkout */
+.radio-group {
+
+}
+
+/* Receipt */
+.receipt-box {
+
+}
+
+/* Feedback messages */
+.error {
+
+}
+
+.success {
+
+}
