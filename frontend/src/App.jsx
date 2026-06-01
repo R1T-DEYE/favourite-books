@@ -26,7 +26,7 @@ export default function App() {
       <Route
         path="/cart"
         element={
-          <ProtectedRoute>
+          <ProtectedRoute requireCustomer={true}>
             <CartPage />
           </ProtectedRoute>
         }
@@ -34,7 +34,7 @@ export default function App() {
       <Route
         path="/checkout"
         element={
-          <ProtectedRoute>
+          <ProtectedRoute requireCustomer={true}>
             <CheckoutPage />
           </ProtectedRoute>
         }

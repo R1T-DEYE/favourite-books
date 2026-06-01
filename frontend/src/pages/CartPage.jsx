@@ -21,7 +21,17 @@ export default function CartPage() {
     }
   };
 
-  useEffect(() => { fetchCart(); }, []);
+  useEffect(() => {
+    getCart(user.linked_id)
+      .then((res) => {
+        if (res.data.items.length === 0) {
+          navigate("/cart");
+        } else {
+          setCart(res.data);
+        }
+      })
+      .catch(() => setError("Failed to load cart."));
+  }, []);
 
   const handleRemove = async (bookId) => {
     try {
