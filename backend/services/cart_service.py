@@ -38,6 +38,21 @@ def add_to_cart(customer_id: str, book_id: str, quantity: int) -> dict:
     cart.add_item(item)
     return cart.to_dict()
 
+def update_cart_quantity(customer_id: str, book_id: str, quantity: int) -> dict:
+    """Updates quantity of an existing cart item, rechecks stock."""
+    book = get_book_by_id(book_id)
+    if book["stock"] < quantity:
+        raise ValueError(
+            f"Not enough stock for '{book['title']}'. "
+            f"Only {book['stock']} available."
+        )
+    cart = get_cart(customer_id)
+    for item in cart.items:
+        if item.book_id == book_id:
+            item.quantity = quantity
+            return cart.to_dict()
+    raise ValueError("Item not found in cart.")
+
 def remove_from_cart(customer_id: str, book_id: str) -> dict:
     cart = get_cart(customer_id)
     cart.remove_item(book_id)

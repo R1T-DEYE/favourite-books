@@ -3,7 +3,8 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from services.cart_service import (
     get_cart_dict, add_to_cart,
-    remove_from_cart, clear_cart
+    remove_from_cart, clear_cart,
+    update_cart_quantity
 )
 
 router = APIRouter(prefix="/cart", tags=["cart"])
@@ -35,3 +36,18 @@ def remove_item(customer_id: str, book_id: str):
 def clear_customer_cart(customer_id: str):
     clear_cart(customer_id)
     return {"message": "Cart cleared."}
+
+
+class UpdateQuantityRequest(BaseModel):
+    customer_id: str
+    book_id: str
+    quantity: int
+
+@router.put("/update")
+def update_quantity(req: UpdateQuantityRequest):
+    try:
+        if req.quantity <= 0:
+            return remove_from_cart(req.customer_id, req.book_id)
+        return update_cart_quantity(req.customer_id, req.book_id, req.quantity)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
