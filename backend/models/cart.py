@@ -6,7 +6,7 @@ from typing import List
 class CartItem:
     """
     Temporary item in a shopping cart.
-    Simpler than OrderItem — no pricing snapshot yet.
+    Simpler than OrderItem - no pricing snapshot yet.
     """
     book_id: str
     title: str
@@ -36,7 +36,7 @@ class ShoppingCart:
     """
     Temporary collection of books selected by a customer.
     Corresponds to the ShoppingCart class in the A2 design.
-    Lives only for the duration of a session — converted to
+    Lives only for the duration of a session - converted to
     an Order at checkout.
     """
     customer_id: str

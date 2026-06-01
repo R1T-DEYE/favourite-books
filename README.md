@@ -1,5 +1,5 @@
 # Favourite Books Online Bookstore
-SWE30003 Assignment 3 — Group 6
+SWE30003 Assignment 3 - Group 6
 
 ## Prerequisites
 Make sure you have these installed before anything else:
@@ -33,7 +33,7 @@ npm install
 
 You need **two terminals open at the same time**.
 
-**Terminal 1 — Backend:**
+**Terminal 1 - Backend:**
 ```bash
 cd C:\dev\favourite-books\backend
 .venv\Scripts\activate
@@ -41,7 +41,7 @@ uvicorn main:app --reload
 ```
 Backend runs at: http://localhost:8000
 
-**Terminal 2 — Frontend:**
+**Terminal 2 - Frontend:**
 ```bash
 cd C:\dev\favourite-books\frontend
 npm run dev
@@ -96,7 +96,7 @@ Make sure you're inside the `frontend` folder, not the root.
 - **API Communication:** Axios
 
 ## Notes
-- Do NOT push the `.venv` folder or `node_modules` — these are in `.gitignore`
+- Do NOT push the `.venv` folder or `node_modules` - these are in `.gitignore`
 - Always activate the virtual environment before running the backend
 - If you add a new Python package, run `pip freeze > requirements.txt` and commit it
-- If you add a new npm package, the `package.json` updates automatically — just commit that
+- If you add a new npm package, the `package.json` updates automatically - just commit that

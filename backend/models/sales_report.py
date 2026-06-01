@@ -4,7 +4,7 @@ from typing import List
 
 @dataclass
 class SalesReportItem:
-    """Single line item in a sales report — one book's sales data."""
+    """Single line item in a sales report - one book's sales data."""
     book_id: str
     title: str
     total_sold: int

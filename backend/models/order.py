@@ -7,7 +7,7 @@ class OrderItem:
     """
     Represents a single book entry within an order.
     Corresponds to the OrderItem class in the A2 design.
-    Not the book itself — the book AS PART OF A SPECIFIC PURCHASE.
+    Not the book itself - the book AS PART OF A SPECIFIC PURCHASE.
     """
     book_id: str
     title: str
