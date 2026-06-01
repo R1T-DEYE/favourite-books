@@ -1,0 +1,102 @@
+[
+  {
+    "book_id": "book_001",
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "genre": "Fiction",
+    "category": "Classic",
+    "price": 19.99,
+    "stock": 15,
+    "description": "A story of wealth, class, and the American Dream in the 1920s."
+  },
+  {
+    "book_id": "book_002",
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "genre": "Fiction",
+    "category": "Classic",
+    "price": 22.99,
+    "stock": 10,
+    "description": "A powerful story of racial injustice and moral growth in the American South."
+  },
+  {
+    "book_id": "book_003",
+    "title": "1984",
+    "author": "George Orwell",
+    "genre": "Dystopian",
+    "category": "Classic",
+    "price": 17.99,
+    "stock": 20,
+    "description": "A chilling portrayal of a totalitarian society under constant surveillance."
+  },
+  {
+    "book_id": "book_004",
+    "title": "Dune",
+    "author": "Frank Herbert",
+    "genre": "Science Fiction",
+    "category": "Sci-Fi",
+    "price": 24.99,
+    "stock": 8,
+    "description": "An epic tale of politics, religion, and survival on a desert planet."
+  },
+  {
+    "book_id": "book_005",
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "genre": "Fantasy",
+    "category": "Fantasy",
+    "price": 21.99,
+    "stock": 12,
+    "description": "A hobbit's unexpected journey through a world of dragons and dwarves."
+  },
+  {
+    "book_id": "book_006",
+    "title": "Sapiens",
+    "author": "Yuval Noah Harari",
+    "genre": "Non-Fiction",
+    "category": "History",
+    "price": 29.99,
+    "stock": 18,
+    "description": "A brief history of humankind from the Stone Age to the present."
+  },
+  {
+    "book_id": "book_007",
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "genre": "Fiction",
+    "category": "Philosophy",
+    "price": 18.99,
+    "stock": 25,
+    "description": "A shepherd's journey to find treasure and discover his personal legend."
+  },
+  {
+    "book_id": "book_008",
+    "title": "Atomic Habits",
+    "author": "James Clear",
+    "genre": "Non-Fiction",
+    "category": "Self-Help",
+    "price": 32.99,
+    "stock": 30,
+    "description": "A proven framework for building good habits and breaking bad ones."
+  },
+  {
+    "book_id": "book_009",
+    "title": "The Pragmatic Programmer",
+    "author": "Andrew Hunt",
+    "genre": "Non-Fiction",
+    "category": "Technology",
+    "price": 59.99,
+    "stock": 5,
+    "description": "Essential advice for software developers at any stage of their career."
+  },
+  {
+    "book_id": "book_010",
+    "title": "Clean Code",
+    "author": "Robert C. Martin",
+    "genre": "Non-Fiction",
+    "category": "Technology",
+    "price": 54.99,
+    "stock": 7,
+    "description": "A handbook of agile software craftsmanship and best coding practices."
+  }
+]
