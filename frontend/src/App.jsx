@@ -9,10 +9,11 @@ import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import StaffDashboard from "./pages/StaffDashboard";
 
-function ProtectedRoute({ children, requireStaff = false }) {
+function ProtectedRoute({ children, requireStaff = false, requireCustomer = false }) {
   const { user } = useAuth();
   if (!user) return <Navigate to="/login" />;
   if (requireStaff && user.role !== "staff") return <Navigate to="/" />;
+  if (requireCustomer && user.role !== "customer") return <Navigate to="/staff" />;
   return children;
 }
 
