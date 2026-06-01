@@ -65,6 +65,7 @@ favourite-books/
 │       └── api/             # Axios API client
 └── README.md
 ```
+
 ## Troubleshooting
 
 **`.venv\Scripts\activate` not working?**
@@ -81,3 +82,21 @@ uvicorn main:app --reload --port 8001
 
 **`npm install` failing?**
 Make sure you're inside the `frontend` folder, not the root.
+
+## Scenarios to Implement
+- **Scenario 1:** Customer registration and login
+- **Scenario 2:** Browse catalogue and add books to cart
+- **Scenario 3:** Checkout and payment
+- **Scenario 4:** Staff catalogue management and sales report
+
+## Tech Stack
+- **Frontend:** React + Vite
+- **Backend:** Python FastAPI
+- **Storage:** JSON files (no database required)
+- **API Communication:** Axios
+
+## Notes
+- Do NOT push the `.venv` folder or `node_modules` — these are in `.gitignore`
+- Always activate the virtual environment before running the backend
+- If you add a new Python package, run `pip freeze > requirements.txt` and commit it
+- If you add a new npm package, the `package.json` updates automatically — just commit that
