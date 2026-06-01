@@ -1,3 +1,10 @@
 [
-    
+  {
+    "customer_id": "cust_b5abfa36",
+    "first_name": "John",
+    "last_name": "Smith",
+    "email": "john@test.com",
+    "phone": "0412345678",
+    "address": "123 Test St, Melbourne"
+  }
 ]
