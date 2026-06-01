@@ -15,9 +15,19 @@ export default function CheckoutPage() {
   const [receipt, setReceipt] = useState(null);
 
   useEffect(() => {
-    getCart(user.linked_id)
-      .then((res) => setCart(res.data))
-      .catch(() => setError("Failed to load cart."));
+    const loadCart = async () => {
+      try {
+        const res = await getCart(user.linked_id);
+        if (res.data.items.length === 0) {
+          navigate("/cart");
+          return;
+        }
+        setCart(res.data);
+      } catch {
+        setError("Failed to load cart.");
+      }
+    };
+    loadCart();
   }, []);
 
   const handleCheckout = async () => {
