@@ -22,7 +22,7 @@ def _save_json(filename: str, data: list):
         json.dump(data, f, indent=2)
 
 def checkout(customer_id: str, payment_method: str,
-             shipping_address: str) -> dict:
+             shipping_address: str, payment_details: dict = None) -> dict:
     """
     Converts ShoppingCart into an Order, processes payment,
     generates InvoiceReceipt and Shipment on success.
