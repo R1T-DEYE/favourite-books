@@ -6,7 +6,7 @@
     "genre": "Fiction",
     "category": "Classic",
     "price": 19.99,
-    "stock": 15,
+    "stock": 9,
     "description": "A story of wealth, class, and the American Dream in the 1920s."
   },
   {
@@ -16,7 +16,7 @@
     "genre": "Fiction",
     "category": "Classic",
     "price": 22.99,
-    "stock": 10,
+    "stock": 5,
     "description": "A powerful story of racial injustice and moral growth in the American South."
   },
   {
@@ -26,7 +26,7 @@
     "genre": "Dystopian",
     "category": "Classic",
     "price": 17.99,
-    "stock": 18,
+    "stock": 13,
     "description": "A chilling portrayal of a totalitarian society under constant surveillance."
   },
   {
@@ -56,7 +56,7 @@
     "genre": "Non-Fiction",
     "category": "History",
     "price": 29.99,
-    "stock": 18,
+    "stock": 14,
     "description": "A brief history of humankind from the Stone Age to the present."
   },
   {

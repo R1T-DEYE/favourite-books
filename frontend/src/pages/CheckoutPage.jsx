@@ -14,6 +14,12 @@ export default function CheckoutPage() {
   const [error, setError] = useState("");
   const [receipt, setReceipt] = useState(null);
 
+  // New states for payment details
+  const [cardNumber, setCardNumber] = useState("");
+  const [expiryDate, setExpiryDate] = useState("");
+  const [cvv, setCvv] = useState("");
+  const [paypalEmail, setPaypalEmail] = useState("");
+
   useEffect(() => {
     const loadCart = async () => {
       try {
@@ -32,15 +38,37 @@ export default function CheckoutPage() {
 
   const handleCheckout = async () => {
     setError("");
+    
+    // 1. Validate Shipping Address
     if (!shippingAddress.trim()) {
       setError("Shipping address is required.");
       return;
     }
+
+    // 2. Validate Payment Details based on selection
+    if (paymentMethod === "card") {
+      if (!cardNumber.trim() || !expiryDate.trim() || !cvv.trim()) {
+        setError("All credit card details are required.");
+        return;
+      }
+    } else if (paymentMethod === "paypal") {
+      if (!paypalEmail.trim()) {
+        setError("PayPal email address is required.");
+        return;
+      }
+    }
+
+    // 3. Construct extra payload details safely
+    const paymentDetails = paymentMethod === "card" 
+      ? { card_number: cardNumber, expiry: expiryDate, cvv: cvv }
+      : { paypal_email: paypalEmail };
+
     try {
       const res = await checkout({
         customer_id: user.linked_id,
         payment_method: paymentMethod,
         shipping_address: shippingAddress,
+        payment_details: paymentDetails, // Sending fields to backend
       });
       if (res.data.success) {
         setReceipt(res.data);
@@ -115,12 +143,14 @@ export default function CheckoutPage() {
       </div>
 
       <h3>Shipping Address</h3>
-      <input
-        className="full-width-input"
-        placeholder="Enter your full shipping address"
-        value={shippingAddress}
-        onChange={(e) => setShippingAddress(e.target.value)}
-      />
+      <div className="form-group">
+        <input
+          className="full-width-input"
+          placeholder="Enter your full shipping address"
+          value={shippingAddress}
+          onChange={(e) => setShippingAddress(e.target.value)}
+        />
+      </div>
 
       <h3>Payment Method</h3>
       <div className="radio-group">
@@ -138,10 +168,59 @@ export default function CheckoutPage() {
         </label>
       </div>
 
+      {/* Dynamic Payment Fields conditional block */}
+      {paymentMethod === "card" && (
+        <div style={{ margin: "20px 0", padding: "15px", border: "1px solid #dee2e6", borderRadius: "8px" }}>
+          <div className="form-group">
+            <label>Card Number</label>
+            <input 
+              type="text" 
+              placeholder="1234 5678 1234 5678" 
+              value={cardNumber} 
+              onChange={(e) => setCardNumber(e.target.value)} 
+            />
+          </div>
+          <div style={{ display: "flex", gap: "15px" }}>
+            <div className="form-group" style={{ flex: 1 }}>
+              <label>Expiry Date</label>
+              <input 
+                type="text" 
+                placeholder="MM/YY" 
+                value={expiryDate} 
+                onChange={(e) => setExpiryDate(e.target.value)} 
+              />
+            </div>
+            <div className="form-group" style={{ flex: 1 }}>
+              <label>CVV</label>
+              <input 
+                type="password" 
+                placeholder="123" 
+                value={cvv} 
+                onChange={(e) => setCvv(e.target.value)} 
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {paymentMethod === "paypal" && (
+        <div style={{ margin: "20px 0", padding: "15px", border: "1px solid #dee2e6", borderRadius: "8px" }}>
+          <div className="form-group">
+            <label>PayPal Email Address</label>
+            <input 
+              type="email" 
+              placeholder="name@example.com" 
+              value={paypalEmail} 
+              onChange={(e) => setPaypalEmail(e.target.value)} 
+            />
+          </div>
+        </div>
+      )}
+
       {error && <p className="error">{error}</p>}
 
       <div className="button-group">
-        <button onClick={() => navigate("/cart")}>Back to Cart</button>
+        <button className="secondary" onClick={() => navigate("/cart")}>Back to Cart</button>
         <button onClick={handleCheckout}>Place Order</button>
       </div>
     </div>

@@ -32,5 +32,77 @@
     "shipping_address": "Swinburne's Attic",
     "created_at": "2026-06-01T16:21:47.161723",
     "total": 17.99
+  },
+  {
+    "order_id": "order_b60be761",
+    "customer_id": "cust_71aa0ef4",
+    "items": [
+      {
+        "book_id": "book_001",
+        "title": "The Great Gatsby",
+        "quantity": 5,
+        "unit_price": 19.99,
+        "subtotal": 99.94999999999999
+      },
+      {
+        "book_id": "book_002",
+        "title": "To Kill a Mockingbird",
+        "quantity": 1,
+        "unit_price": 22.99,
+        "subtotal": 22.99
+      },
+      {
+        "book_id": "book_003",
+        "title": "1984",
+        "quantity": 5,
+        "unit_price": 17.99,
+        "subtotal": 89.94999999999999
+      }
+    ],
+    "status": "paid",
+    "shipping_address": "idnfie",
+    "created_at": "2026-06-02T15:10:08.769876",
+    "total": 212.89
+  },
+  {
+    "order_id": "order_82aeb388",
+    "customer_id": "cust_71aa0ef4",
+    "items": [
+      {
+        "book_id": "book_002",
+        "title": "To Kill a Mockingbird",
+        "quantity": 4,
+        "unit_price": 22.99,
+        "subtotal": 91.96
+      },
+      {
+        "book_id": "book_006",
+        "title": "Sapiens",
+        "quantity": 4,
+        "unit_price": 29.99,
+        "subtotal": 119.96
+      }
+    ],
+    "status": "paid",
+    "shipping_address": "rtbr",
+    "created_at": "2026-06-02T15:10:31.650163",
+    "total": 211.92
+  },
+  {
+    "order_id": "order_b839e991",
+    "customer_id": "cust_71aa0ef4",
+    "items": [
+      {
+        "book_id": "book_001",
+        "title": "The Great Gatsby",
+        "quantity": 1,
+        "unit_price": 19.99,
+        "subtotal": 19.99
+      }
+    ],
+    "status": "paid",
+    "shipping_address": "t5tt",
+    "created_at": "2026-06-02T15:24:19.243960",
+    "total": 19.99
   }
 ]
