@@ -11,7 +11,7 @@ Make sure you have these installed before anything else:
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/YOURUSERNAME/favourite-books.git
+git clone https://github.com/R1T-DEYE/favourite-books.git
 cd favourite-books
 ```
 
