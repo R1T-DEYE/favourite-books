@@ -16,11 +16,29 @@
    .full-width-input — shipping address input on checkout
    .error            — red error message text
    .success          — green success message text
-   .staff-header    — top bar with title and logout button on staff dashboard
-   .tab-group       — horizontal tab buttons on staff dashboar
-   .tab-active      — active tab button state
-   .report-controls — date range inputs and generate button on sales report
+   .staff-header     — top bar with title and logout button on staff dashboard
+   .tab-group        — horizontal tab buttons on staff dashboard
+   .tab-active       — active tab button state
+   .report-controls  — date range inputs and generate button on sales report
    ================================================ */
+
+/* Design System Variables */
+:root {
+  --primary: #2c3e50;         /* Deep Slate Blue */
+  --primary-hover: #1a252f;
+  --accent: #e07a5f;          /* Warm Bookish Terracotta */
+  --accent-hover: #c96449;
+  --bg-main: #f8f9fa;         /* Soft off-white */
+  --bg-card: #ffffff;
+  --text-main: #333333;
+  --text-muted: #6c757d;
+  --border-color: #dee2e6;
+  --success: #2a9d8f;
+  --error: #e63946;
+  --radius: 8px;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --transition: all 0.2s ease-in-out;
+}
 
 /* Global reset */
 *, *::before, *::after {
@@ -30,98 +48,285 @@
 }
 
 body {
-
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Page layout */
 .page-container {
-
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: calc(100vh - 80px);
 }
 
 .form-container {
-
+  max-width: 420px;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
 }
 
 /* Forms */
 .form-group {
-
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.form-group input {
+.form-group label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
 
+.form-group input,
+.full-width-input,
+.search-bar input {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  background-color: var(--bg-card);
+  transition: var(--transition);
+  outline: none;
+}
+
+.form-group input:focus,
+.full-width-input:focus,
+.search-bar input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(224, 122, 95, 0.15);
 }
 
 .full-width-input {
-
+  margin-top: 8px;
 }
 
 /* Buttons */
 button {
-
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--accent);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  display:inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 button:hover {
-
+  background-color: var(--accent-hover);
 }
 
 button:disabled {
-
+  background-color: var(--border-color);
+  color: var(--text-muted);
+  cursor: not-allowed;
 }
 
 .button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+}
 
+/* Secondary variant button helper (if needed) */
+button.secondary {
+  background-color: var(--primary);
+}
+button.secondary:hover {
+  background-color: var(--primary-hover);
 }
 
 /* Tables */
 .data-table {
-
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: var(--bg-card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
 }
 
 .data-table th {
-
+  background-color: var(--primary);
+  color: #ffffff;
+  text-align: left;
+  padding: 14px 16px;
+  font-weight: 600;
+  font-size: 0.95rem;
 }
 
 .data-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-main);
+}
 
+.data-table tr:last-child td {
+  border-bottom: none;
 }
 
 .data-table tr:hover {
-
+  background-color: rgba(0, 0, 0, 0.015);
 }
 
 /* Catalogue */
 .search-bar {
+  display: flex;
+  gap: 10px;
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+}
 
+.search-bar input {
+  flex: 1;
 }
 
 .qty-input {
-
+  width: 70px;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  text-align: center;
+  font-size: 1rem;
 }
 
 /* Cart */
 .qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
+.qty-controls button {
+  padding: 6px 12px;
+  background-color: var(--primary);
+  font-size: 0.9rem;
+}
+
+.qty-controls button:hover {
+  background-color: var(--primary-hover);
 }
 
 .cart-total {
-
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: right;
+  margin-top: 25px;
+  color: var(--primary);
 }
 
 /* Checkout */
 .radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 15px 0;
+}
 
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.radio-group label:hover {
+  background-color: rgba(0, 0, 0, 0.01);
 }
 
 /* Receipt */
 .receipt-box {
-
+  background-color: var(--bg-card);
+  border: 1px dashed var(--accent);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-top: 20px;
+  box-shadow: var(--shadow);
 }
 
 /* Feedback messages */
 .error {
-
+  color: var(--error);
+  background-color: rgba(230, 57, 70, 0.1);
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 10px 0;
 }
 
 .success {
+  color: var(--success);
+  background-color: rgba(42, 157, 143, 0.1);
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 10px 0;
+}
 
+/* Staff Dashboard Extras */
+.staff-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 30px;
+}
+
+.tab-group {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1px;
+}
+
+.tab-group button {
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: var(--radius) var(--radius) 0 0;
+  padding: 12px 24px;
+}
+
+.tab-group button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--text-main);
+}
+
+.tab-group button.tab-active {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+.report-controls {
+  display: flex;
+  align-items: flex-end;
+  gap: 15px;
+  margin-bottom: 25px;
+  background-color: var(--bg-card);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
