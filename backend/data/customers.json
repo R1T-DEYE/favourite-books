@@ -14,5 +14,13 @@
     "email": "Jay",
     "phone": "012312432",
     "address": "123@gmail.com"
+  },
+  {
+    "customer_id": "cust_9df1505a",
+    "first_name": "John",
+    "last_name": "Wick",
+    "email": "doglover@gmail.com",
+    "phone": "0412 345 678",
+    "address": "121 Mill Neck, Long Island, New York"
   }
 ]

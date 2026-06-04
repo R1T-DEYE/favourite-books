@@ -27,7 +27,7 @@ export default function LoginPage() {
       if (res.data.role === "staff") {
         navigate("/staff");
       } else {
-        navigate("/catalogue");
+        navigate("/");
       }
     } catch (err) {
       setError(err.response?.data?.detail || "Login failed.");
