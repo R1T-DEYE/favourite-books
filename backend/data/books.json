@@ -56,7 +56,7 @@
     "genre": "Non-Fiction",
     "category": "History",
     "price": 29.99,
-    "stock": 14,
+    "stock": 10,
     "description": "A brief history of humankind from the Stone Age to the present."
   },
   {
@@ -98,5 +98,15 @@
     "price": 54.99,
     "stock": 7,
     "description": "A handbook of agile software craftsmanship and best coding practices."
+  },
+  {
+    "book_id": "book_6aa8f6d5",
+    "title": "John Wick #1",
+    "author": "Greg Pak",
+    "genre": "Thriller",
+    "category": "Fiction",
+    "price": 200.0,
+    "stock": 15,
+    "description": "When a young John Wick emerges from prison and embarks upon his first, epic vendetta, he comes up against a strange, powerful community of assassins and must learn how to master the Book of Rules that guides their lethal business. What are the Three Bills? Who is Calamity? And who was John Wick before he became the Baba Yaga? Here for the first time, read the thrilling origin story of John Wick, from \"Planet Hulk\" writer Greg Pak and \"Dark Horse Presents\" artist Giovanni Valletta."
   }
 ]

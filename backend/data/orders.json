@@ -121,5 +121,22 @@
     "shipping_address": "Swiburne's basement",
     "created_at": "2026-06-03T03:29:56.145671",
     "total": 19.99
+  },
+  {
+    "order_id": "order_9f3038af",
+    "customer_id": "cust_9df1505a",
+    "items": [
+      {
+        "book_id": "book_006",
+        "title": "Sapiens",
+        "quantity": 4,
+        "unit_price": 29.99,
+        "subtotal": 119.96
+      }
+    ],
+    "status": "paid",
+    "shipping_address": "121 Mill Neck, Long Island, New York",
+    "created_at": "2026-06-05T03:09:54.074048",
+    "total": 119.96
   }
 ]
