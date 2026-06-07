@@ -1,11 +1,27 @@
 # Favourite Books Online Bookstore
-SWE30003 Assignment 3 - Group 6
+A web-based bookstore application built for SWE30003 Assignment 3 (Group 6).
+
+The system supports customer registration and login, catalogue browsing and cart management, checkout and payment processing, and a staff dashboard for catalogue management and sales reporting.
+
+Built with Python FastAPI (backend) and React + Vite (frontend).
 
 ## Prerequisites
 Make sure you have these installed before anything else:
 - [Python 3.13+](https://www.python.org/downloads/)
 - [Node.js 18+](https://nodejs.org/)
 - [Git](https://git-scm.com/)
+
+## Test Accounts
+A default staff account is pre-seeded in `backend/data/accounts.json`
+since there is no staff registration flow.
+
+| Role     | Email                    | Password    |
+|----------|--------------------------|-------------|
+| Staff    | staff@favouritebooks.com | admin123    |
+| Customer | john@test.com            | password123 |
+
+For customer testing, you can also register a new account through the app normally.
+
 
 ## Getting Started
 
@@ -84,10 +100,11 @@ uvicorn main:app --reload --port 8001
 Make sure you're inside the `frontend` folder, not the root.
 
 ## Scenarios to Implement
-- **Scenario 1:** Customer registration and login
-- **Scenario 2:** Browse catalogue and add books to cart
-- **Scenario 3:** Checkout and payment
-- **Scenario 4:** Staff catalogue management and sales report
+## Implemented Features
+- **Scenario 1:** Customer registration with email validation and secure login
+- **Scenario 2:** Browse and search the book catalogue, manage shopping cart
+- **Scenario 3:** Checkout with card or PayPal payment, order confirmation with receipt and shipment details
+- **Scenario 4:** Staff dashboard for catalogue management (add, edit, delete books) and date-range sales reporting
 
 ## Tech Stack
 - **Frontend:** React + Vite
