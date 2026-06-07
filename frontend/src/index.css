@@ -330,3 +330,265 @@ button.secondary:hover {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
+.catalogue-page {
+  background: #faf9f6;
+  min-height: 100vh;
+  color: #111;
+}
+
+.shop-header {
+  height: 130px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.shop-logo {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  cursor: pointer;
+}
+
+.shop-nav {
+  position: absolute;
+  bottom: 14px;
+  display: flex;
+  gap: 32px;
+}
+
+.shop-nav button {
+  background: none;
+  border: none;
+  color: #111;
+  font-size: 13px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.catalogue-layout {
+  display: flex;
+}
+
+.filter-sidebar {
+  width: 260px;
+  background: #faf9f6;
+  border-right: 1px solid #ddd;
+  padding: 24px 28px;
+  min-height: calc(100vh - 90px);
+}
+
+.filter-sidebar h3,
+.filter-section h4 {
+  letter-spacing: 4px;
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.filter-section {
+  border-top: 1px solid #ddd;
+  padding: 20px 0;
+}
+
+.filter-section p {
+  font-size: 14px;
+  margin: 12px 0;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.product-area {
+  flex: 1;
+}
+
+.product-toolbar {
+  min-height: 70px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 28px;
+  gap: 16px;
+}
+
+.search-box {
+  display: flex;
+  gap: 10px;
+}
+
+.search-box input {
+  width: 320px;
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+.search-box button,
+.product-toolbar select,
+.buy-btn {
+  padding: 12px 18px;
+  border: 1px solid #111;
+  background: white;
+  color: #111;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.product-card {
+  background: #faf9f6;
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.product-image {
+  height: 390px;
+  background: #f8f7f2;
+  position: relative;
+  overflow: hidden;
+}
+
+.book-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Optional fallback cover if image is missing */
+.book-cover {
+  width: 190px;
+  height: 270px;
+  background: white;
+  border: 2px solid #111;
+  box-shadow: 14px 14px 0 rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.heart-btn {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  background: white;
+  border: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 22px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.product-info {
+  padding: 24px 28px 32px;
+  min-height: 250px;
+}
+
+.book-author {
+  color: #8b8b8b;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.product-info h3 {
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.35;
+  margin: 14px 0;
+}
+
+.book-genre {
+  color: #555;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.book-price {
+  font-size: 16px;
+  margin-top: 18px;
+}
+
+.book-stock {
+  font-size: 13px;
+  color: #666;
+}
+
+.qty-input {
+  width: 70px;
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+}
+
+.buy-btn {
+  margin-top: 12px;
+  width: 100%;
+}
+
+.success {
+  margin: 16px 28px;
+  color: green;
+}
+
+.error {
+  margin: 16px 28px;
+  color: red;
+}
+
+.no-books {
+  padding: 28px;
+}
+
+@media (max-width: 1000px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filter-sidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  .shop-logo {
+    font-size: 24px;
+  }
+
+  .shop-nav {
+    gap: 14px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-toolbar {
+    height: auto;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-box {
+    flex-direction: column;
+  }
+
+  .search-box input {
+    width: 100%;
+  }
+}

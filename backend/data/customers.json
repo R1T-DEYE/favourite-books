@@ -22,5 +22,13 @@
     "email": "doglover@gmail.com",
     "phone": "0412 345 678",
     "address": "121 Mill Neck, Long Island, New York"
+  },
+  {
+    "customer_id": "cust_280c5687",
+    "first_name": "123",
+    "last_name": "123",
+    "email": "duy123@gmail.com",
+    "phone": "0101010101",
+    "address": "123213"
   }
 ]

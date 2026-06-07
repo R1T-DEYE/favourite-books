@@ -7,7 +7,8 @@
     "category": "Classic",
     "price": 19.99,
     "stock": 8,
-    "description": "A story of wealth, class, and the American Dream in the 1920s."
+    "description": "A story of wealth, class, and the American Dream in the 1920s.",
+    "image": "gasby.jpg"
   },
   {
     "book_id": "book_002",
@@ -17,7 +18,8 @@
     "category": "Classic",
     "price": 22.99,
     "stock": 5,
-    "description": "A powerful story of racial injustice and moral growth in the American South."
+    "description": "A powerful story of racial injustice and moral growth in the American South.",
+    "image": "mockingb.webp"
   },
   {
     "book_id": "book_003",
@@ -27,7 +29,8 @@
     "category": "Classic",
     "price": 17.99,
     "stock": 13,
-    "description": "A chilling portrayal of a totalitarian society under constant surveillance."
+    "description": "A chilling portrayal of a totalitarian society under constant surveillance.",
+    "image": "1984.jpg"
   },
   {
     "book_id": "book_004",
@@ -37,7 +40,8 @@
     "category": "Sci-Fi",
     "price": 24.99,
     "stock": 8,
-    "description": "An epic tale of politics, religion, and survival on a desert planet."
+    "description": "An epic tale of politics, religion, and survival on a desert planet.",
+    "image": "dune.jpg"
   },
   {
     "book_id": "book_005",
@@ -47,7 +51,8 @@
     "category": "Fantasy",
     "price": 21.99,
     "stock": 12,
-    "description": "A hobbit's unexpected journey through a world of dragons and dwarves."
+    "description": "A hobbit's unexpected journey through a world of dragons and dwarves.",
+    "image": "hobbit.jpg"
   },
   {
     "book_id": "book_006",
@@ -57,7 +62,8 @@
     "category": "History",
     "price": 29.99,
     "stock": 10,
-    "description": "A brief history of humankind from the Stone Age to the present."
+    "description": "A brief history of humankind from the Stone Age to the present.",
+    "image": "sapiens.jpg"
   },
   {
     "book_id": "book_007",
@@ -67,7 +73,8 @@
     "category": "Philosophy",
     "price": 18.99,
     "stock": 25,
-    "description": "A shepherd's journey to find treasure and discover his personal legend."
+    "description": "A shepherd's journey to find treasure and discover his personal legend.",
+    "image": "alchemist.jpg"
   },
   {
     "book_id": "book_008",
@@ -77,7 +84,8 @@
     "category": "Self-Help",
     "price": 32.99,
     "stock": 30,
-    "description": "A proven framework for building good habits and breaking bad ones."
+    "description": "A proven framework for building good habits and breaking bad ones.",
+    "image": "atm.jpg"
   },
   {
     "book_id": "book_009",
@@ -87,7 +95,8 @@
     "category": "Technology",
     "price": 59.99,
     "stock": 5,
-    "description": "Essential advice for software developers at any stage of their career."
+    "description": "Essential advice for software developers at any stage of their career.",
+    "image": "prag.jpg"
   },
   {
     "book_id": "book_010",
@@ -97,7 +106,8 @@
     "category": "Technology",
     "price": 54.99,
     "stock": 7,
-    "description": "A handbook of agile software craftsmanship and best coding practices."
+    "description": "A handbook of agile software craftsmanship and best coding practices.",
+    "image": "cc.jpg"
   },
   {
     "book_id": "book_6aa8f6d5",
@@ -107,6 +117,7 @@
     "category": "Fiction",
     "price": 200.0,
     "stock": 15,
-    "description": "When a young John Wick emerges from prison and embarks upon his first, epic vendetta, he comes up against a strange, powerful community of assassins and must learn how to master the Book of Rules that guides their lethal business. What are the Three Bills? Who is Calamity? And who was John Wick before he became the Baba Yaga? Here for the first time, read the thrilling origin story of John Wick, from \"Planet Hulk\" writer Greg Pak and \"Dark Horse Presents\" artist Giovanni Valletta."
+    "description": "When a young John Wick emerges from prison and embarks upon his first, epic vendetta, he comes up against a strange, powerful community of assassins and must learn how to master the Book of Rules that guides their lethal business.",
+    "image": "jw.jpg"
   }
 ]
