@@ -1,119 +1,120 @@
-# Favourite Books Online Bookstore
-A web-based bookstore application built for SWE30003 Assignment 3 (Group 6).
+# Favourite Books — Online Bookstore Demo
 
-The system supports customer registration and login, catalogue browsing and cart management, checkout and payment processing, and a staff dashboard for catalogue management and sales reporting.
+A full-stack bookstore application built for **SWE30003 Software Architectures and Design, Assignment 3 (Group 6)**. The project explores how a React frontend, FastAPI backend, domain models, and separate service layers can support a small shopping workflow.
 
-Built with Python FastAPI (backend) and React + Vite (frontend).
+**This is a coursework demonstration, not a live store. All included customer, staff, account, and order records are synthetic test fixtures. No real payments are processed.**
 
-## Prerequisites
-Make sure you have these installed before anything else:
-- [Python 3.13+](https://www.python.org/downloads/)
-- [Node.js 18+](https://nodejs.org/)
-- [Git](https://git-scm.com/)
+## Features
 
-## Test Accounts
-A default staff account is pre-seeded in `backend/data/accounts.json`
-since there is no staff registration flow.
+- Register and sign in as a customer using the demo account system.
+- Browse and search the book catalogue.
+- Add books to a cart and manage quantities.
+- Complete a **simulated** card or PayPal checkout.
+- View a generated receipt and shipment record.
+- Use a staff dashboard to manage catalogue items and inspect sales summaries.
 
-| Role     | Email                    | Password    |
-|----------|--------------------------|-------------|
-| Staff    | staff@favouritebooks.com | admin123    |
-| Customer | john@test.com            | password123 |
+## Stack and structure
 
-For customer testing, you can also register a new account through the app normally.
+| Area | Technology |
+| --- | --- |
+| Frontend | React, Vite, React Router, Axios |
+| Backend | Python, FastAPI, Pydantic |
+| Persistence | Local JSON files in `backend/data/` |
+| Design | API routes, service-layer business logic, domain models |
 
+```text
+backend/
+  main.py        FastAPI application
+  routes/        Auth, cart, catalogue, orders, staff API routes
+  services/      Business logic and JSON persistence
+  models/        Account, book, cart, order, payment, shipment models
+  data/          Synthetic fixtures and locally modified records
+frontend/
+  src/pages/     Customer and staff screens
+  src/context/   Frontend authentication state
+  src/api/       API client
+```
 
-## Getting Started
+## Run locally
 
-### 1. Clone the repository
+**Requirements:** Python 3.13+, a current Node.js version compatible with this repository's Vite dependency, and npm.
+
+Clone:
+
 ```bash
 git clone https://github.com/R1T-DEYE/favourite-books.git
 cd favourite-books
 ```
 
-### 2. Set up the backend
+### 1. Backend
+
+From the repository root:
+
 ```bash
 cd backend
 python -m venv .venv
-.venv\Scripts\activate
-pip install fastapi uvicorn python-multipart
 ```
 
-### 3. Set up the frontend
+Activate the environment:
+
 ```bash
-cd ../frontend
-npm install
+# Windows PowerShell
+.venv\Scripts\Activate.ps1
+
+# macOS / Linux (use this instead)
+source .venv/bin/activate
 ```
 
-## Running the App
+Install dependencies and start the API:
 
-You need **two terminals open at the same time**.
-
-**Terminal 1 - Backend:**
 ```bash
-cd C:\dev\favourite-books\backend
-.venv\Scripts\activate
-uvicorn main:app --reload
+python -m pip install -r requirements.txt
+uvicorn main:app --reload --port 8000
 ```
-Backend runs at: http://localhost:8000
 
-**Terminal 2 - Frontend:**
+The backend is available at <http://localhost:8000/> and the generated API docs at <http://localhost:8000/docs>.
+
+### 2. Frontend
+
+Open a second terminal from the repository root:
+
 ```bash
-cd C:\dev\favourite-books\frontend
+cd frontend
+npm ci
 npm run dev
 ```
-Frontend runs at: http://localhost:5173
 
-## Project Structure
-```text
-favourite-books/
-├── backend/
-│   ├── main.py              # FastAPI app entry point
-│   ├── models/              # Data classes (Book, Order, Customer etc.)
-│   ├── routes/              # API endpoint handlers
-│   ├── services/            # Business logic
-│   └── data/                # JSON files for persistent storage
-├── frontend/
-│   └── src/
-│       ├── components/      # Reusable UI components
-│       ├── pages/           # Full page views
-│       ├── context/         # Auth state management
-│       └── api/             # Axios API client
-└── README.md
-```
+Visit <http://localhost:5173/>. The backend currently allows requests from that development origin.
 
-## Troubleshooting
+### Demo accounts
 
-**`.venv\Scripts\activate` not working?**
-Run this first in PowerShell:
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
+The following **fictional test credentials** are pre-seeded in `backend/data/accounts.json`:
 
-**Port already in use?**
-Change the backend port:
-```bash
-uvicorn main:app --reload --port 8001
-```
+| Role | Email | Password |
+| --- | --- | --- |
+| Staff | `staff@favouritebooks.com` | `admin123` |
+| Customer | `john@test.com` | `password123` |
 
-**`npm install` failing?**
-Make sure you're inside the `frontend` folder, not the root.
+You can also register another local demo customer.
 
-## Scenarios to Implement
-## Implemented Features
-- **Scenario 1:** Customer registration with email validation and secure login
-- **Scenario 2:** Browse and search the book catalogue, manage shopping cart
-- **Scenario 3:** Checkout with card or PayPal payment, order confirmation with receipt and shipment details
-- **Scenario 4:** Staff dashboard for catalogue management (add, edit, delete books) and date-range sales reporting
+## How checkout works
 
-## Tech Stack
-- **Frontend:** React + Vite
-- **Backend:** Python FastAPI
-- **Storage:** JSON files (no database required)
-- **API Communication:** Axios
+The UI collects a shipping address and demo card/PayPal fields, then calls the FastAPI order endpoint. The backend **simulates successful payment approval**; it does not contact a bank, PayPal, or payment provider. It creates an order, receipt, and shipment record in the application workflow and updates the local JSON store.
 
-## Notes
-- Do NOT push the `.venv` folder or `node_modules` - these are in `.gitignore`
-- Always activate the virtual environment before running the backend
-- If you add a new Python package, run `pip freeze > requirements.txt` and commit it
-- If you add a new npm package, the `package.json` updates automatically - just commit that
+**Never enter genuine card numbers, CVVs, real addresses, or personal credentials.** Use made-up values only.
+
+## Security and limitations
+
+This project is intentionally a teaching prototype and **must not be deployed as a real public storefront without substantial security work**:
+
+- Passwords are currently hashed using unsalted SHA-256 instead of a password-specific algorithm such as Argon2id or bcrypt.
+- Login returns account data for frontend state; the app does not provide a production session/token and server-side authorization system.
+- JSON files are not a transactional database and are unsuitable for multi-user concurrent writes.
+- Payment fields are demonstration inputs only, and payment is always approved by the current backend.
+- Test account passwords are intentionally published for local demonstration; never reuse them elsewhere.
+
+The goal is to illustrate application structure and the core user journeys, **not to claim secure production authentication or payment handling**.
+
+## Academic context
+
+Built for a group university assignment. This README describes the shared product; it does not make unverified claims about individual team members' contributions.
