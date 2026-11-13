@@ -113,6 +113,10 @@ export default function CheckoutPage() {
   return (
     <div className="page-container">
       <h2>Checkout</h2>
+      <p role="note">
+        Demo checkout only. No real payment is processed. Please use fictional
+        shipping and payment details, never your actual card number or CVV.
+      </p>
 
       <h3>Order Summary</h3>
       {cart.items.length === 0 ? (
